@@ -1,17 +1,37 @@
 @import "tailwindcss";
 
+/* ---------------------------------------
+   Root Theme Variables (YOURS)
+--------------------------------------- */
 :root {
   --background: #ffffff;
   --foreground: #171717;
+
+  /* Gothic Theme Colors (ADD THESE): */
+  --goth-bg: #05020b;
+  --goth-card: #12091a;
+  --goth-accent: #bf5af2;
+  --goth-accent-soft: #4b164c;
 }
 
 @theme inline {
   --color-background: var(--background);
   --color-foreground: var(--foreground);
+
+  /* Keep your Next.js font vars */
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
+
+  /* Add gothic colors to Tailwind system */
+  --color-goth-bg: var(--goth-bg);
+  --color-goth-card: var(--goth-card);
+  --color-goth-accent: var(--goth-accent);
+  --color-goth-accent-soft: var(--goth-accent-soft);
 }
 
+/* ---------------------------------------
+   Dark Mode Root Override (YOURS)
+--------------------------------------- */
 @media (prefers-color-scheme: dark) {
   :root {
     --background: #0a0a0a;
@@ -19,8 +39,258 @@
   }
 }
 
+/* ---------------------------------------
+   Base Styling (YOURS)
+--------------------------------------- */
 body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+/* ---------------------------------------
+   Gothic Theme Utility (NEW)
+   Apply when inside the Gothic Compendium pages.
+--------------------------------------- */
+.gothic-theme {
+  background: var(--goth-bg) !important;
+  color: var(--foreground);
+}
+
+.gothic-theme h1,
+.gothic-theme h2,
+.gothic-theme h3,
+.gothic-theme p {
+  color: #e6e3ef;
+}
+
+.vibe-vampire {
+  color: #ff3b73;
+  border-color: #ff3b73;
+  background-color: rgba(255, 59, 115, 0.15);
+}
+
+/* Cards */
+.goth-card {
+  background: var(--goth-card);
+  border: 1px solid color-mix(in srgb, var(--goth-accent-soft) 50%, transparent);
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.4);
+}
+
+/* Accent text/buttons */
+.text-goth-accent {
+  color: var(--goth-accent);
+}
+
+.bg-goth-accent {
+  background: var(--goth-accent);
+}
+
+.border-goth-accent {
+  border-color: var(--goth-accent);
+}
+
+/* Hover glow */
+.goth-glow:hover {
+  box-shadow: 0px 0px 20px var(--goth-accent-soft);
+  transition: box-shadow 0.3s ease;
+}
+
+/* ============================
+   Goth Sparkle Effects
+============================ */
+
+@keyframes goth-sparkle-flicker {
+  0% {
+    opacity: 0;
+    transform: scale(0.6) translate3d(0, 0, 0);
+    filter: drop-shadow(0 0 0 rgba(191, 90, 242, 0));
+  }
+
+  40% {
+    opacity: 1;
+    transform: scale(1.1) translate3d(0, -2px, 0);
+    filter: drop-shadow(0 0 8px rgba(191, 90, 242, 0.8));
+  }
+
+  70% {
+    opacity: 0.7;
+    transform: scale(0.9) translate3d(0, 1px, 0);
+    filter: drop-shadow(0 0 4px rgba(191, 90, 242, 0.5));
+  }
+
+  100% {
+    opacity: 0;
+    transform: scale(0.5) translate3d(0, 0, 0);
+    filter: drop-shadow(0 0 0 rgba(191, 90, 242, 0));
+  }
+}
+
+.goth-sparkle-dot {
+  position: absolute;
+  width: 7px;
+  height: 7px;
+  border-radius: 9999px;
+  background: radial-gradient(circle at center, var(--goth-accent) 0%, transparent 70%);
+  opacity: 0;
+  animation: goth-sparkle-flicker var(--sparkle-duration, 2.6s) ease-in-out infinite;
+}
+
+/* soft glow ring behind the header text */
+.goth-sparkle-aura {
+  position: absolute;
+  inset: auto;
+  top: 50%;
+  left: 0;
+  right: 0;
+  height: 80px;
+  transform: translateY(-50%);
+  background: radial-gradient(circle at center, rgba(191, 90, 242, 0.18), transparent 65%);
+  opacity: 0.7;
+  pointer-events: none;
+}
+
+/* ============================
+   Goth Fairy Dust Cursor
+============================ */
+
+@keyframes fairy-dust-pop {
+  0% {
+    opacity: 0;
+    transform: translate3d(0, 0, 0) scale(0.4) rotate(0deg);
+    filter: drop-shadow(0 0 0 rgba(191, 90, 242, 0));
+  }
+
+  20% {
+    opacity: 1;
+    transform: translate3d(0, -4px, 0) scale(1) rotate(8deg);
+    filter: drop-shadow(0 0 10px rgba(191, 90, 242, 0.9));
+  }
+
+  60% {
+    opacity: 0.9;
+    transform: translate3d(4px, -10px, 0) scale(0.9) rotate(-6deg);
+    filter: drop-shadow(0 0 6px rgba(191, 90, 242, 0.6));
+  }
+
+  100% {
+    opacity: 0;
+    transform: translate3d(0, -16px, 0) scale(0.3) rotate(-12deg);
+    filter: drop-shadow(0 0 0 rgba(191, 90, 242, 0));
+  }
+}
+
+.fairy-dust-layer {
+  position: fixed;
+  inset: 0;
+  pointer-events: none;
+  z-index: 40;
+}
+
+.fairy-dust-particle {
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  border-radius: 9999px;
+  background: radial-gradient(circle at center,
+      var(--goth-accent, #bf5af2) 0%,
+      transparent 70%);
+  opacity: 0;
+  animation: fairy-dust-pop var(--dust-duration, 900ms) ease-out forwards;
+}
+
+/* ============================
+   Gothic Loader
+============================ */
+
+@keyframes goth-loader-spin {
+  0% {
+    transform: rotate(0deg);
+  }
+
+  100% {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes goth-loader-pulse {
+
+  0%,
+  100% {
+    transform: scale(1);
+    opacity: 0.7;
+  }
+
+  50% {
+    transform: scale(1.15);
+    opacity: 1;
+  }
+}
+
+.goth-loader {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+}
+
+.goth-loader-ring {
+  width: 40px;
+  height: 40px;
+  border-radius: 9999px;
+  border: 2px solid rgba(191, 90, 242, 0.12);
+  border-top-color: rgba(191, 90, 242, 0.9);
+  border-right-color: rgba(191, 90, 242, 0.5);
+  animation: goth-loader-spin 1.4s linear infinite;
+  box-shadow: 0 0 12px rgba(191, 90, 242, 0.5);
+}
+
+.goth-loader-orb {
+  position: absolute;
+  width: 18px;
+  height: 18px;
+  border-radius: 9999px;
+  background: radial-gradient(circle at center,
+      rgba(191, 90, 242, 0.95),
+      rgba(5, 2, 11, 0.9));
+  animation: goth-loader-pulse 1.2s ease-in-out infinite;
+  box-shadow: 0 0 16px rgba(191, 90, 242, 0.9);
+}
+
+/* ============================
+   Gothic Footer Decorations
+============================ */
+
+/* Bloodline divider */
+.bloodline {
+  position: relative;
+  width: 100%;
+  height: 2px;
+  background: linear-gradient(to right,
+      transparent 0%,
+      rgba(255, 0, 60, 0.5) 25%,
+      rgba(255, 0, 80, 0.9) 50%,
+      rgba(255, 0, 60, 0.5) 75%,
+      transparent 100%);
+  margin-bottom: 0.75rem;
+  filter: drop-shadow(0 0 6px rgba(255, 0, 80, 0.6));
+}
+
+/* Web corner decorations */
+.footer-web {
+  position: absolute;
+  width: 60px;
+  height: 60px;
+  opacity: 0.25;
+  pointer-events: none;
+}
+
+.footer-web.right {
+  right: 0;
+  top: -6px;
+}
+
+.footer-web.left {
+  left: 0;
+  top: -6px;
 }

@@ -1,36 +1,160 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# 🦇 **Gothic Creature Compendium**
 
-## Getting Started
+*A dark aesthetic search experience for discovering winged, fanged, and beautifully haunting creatures.*
 
-First, run the development server:
+---
+
+## 🖤 Overview
+
+**Gothic Creature Compendium** is a stylized image-search application built with **Next.js**, **Tailwind CSS**, and the **Unsplash API**. Users can explore a curated gallery of gothic-themed creatures, filter them by vibe, and enjoy a fully immersive dark UI enhanced with animated sparkles, fairy-dust cursor trails, and gothic loading effects.
+
+This project demonstrates modern frontend development techniques, API integration, animation, theming, and polished UI/UX design — perfect for showing off full-stack frontend capability.
+
+---
+
+## ✨ Features
+
+### 🩸 **Dynamic Creature Search**
+
+* Search by keyword (e.g., “bat”, “wolf”, “ravens”, “gothic cat”)
+* Fetches high-quality images from the **Unsplash API**
+
+### 🌑 **Vibe Filtering**
+
+Choose from:
+
+* cute
+* spooky
+* demonic
+* ethereal
+* vampire
+* all creatures
+
+Each vibe adjusts the API query to return matching gothic aesthetics.
+
+### 🕸 **Custom Gothic UI**
+
+* Gothic color palette using CSS variables
+* Dark textured backgrounds
+* Subtle shadows and glow effects
+
+### ✨ **Magical Animations**
+
+* **Animated sparkles** behind the header
+* **Fairy dust cursor trails** that follow the mouse
+* **Cursed “summoning sigil” loader** for fetching results
+* Smooth hover animations on creature cards
+
+### 🦇 **Responsive Grid Layout**
+
+* Clean card-based gallery
+* Auto-adjusts for mobile, tablet, and desktop
+
+### 🕷 **Footer with Webs & Bloodline**
+
+* Minimal copyright
+* Decorative spiderweb SVGs
+* Gothic bloodline divider
+
+---
+
+## 🛠️ Tech Stack
+
+### **Frontend**
+
+* **Next.js 14+** (App Router)
+* **React**
+* **Tailwind CSS**
+* **TypeScript**
+
+### **APIs**
+
+* **Unsplash Image API** (search + attribution)
+
+### **Styling Enhancements**
+
+* CSS variables for theme control
+* SVG decorations (spiderwebs)
+* Pure CSS animations
+
+---
+
+## 📁 Project Structure
+
+```
+app/
+  api/
+    creatures/
+      route.ts        # Unsplash API proxy + vibe search logic
+  layout.tsx          # Global layout + gothic header, sparkles, fairy dust
+  page.tsx            # Main page with search + grid
+  globals.css         # Tailwind + gothic theme styles
+
+components/
+  CreatureCard.tsx
+  CreatureGrid.tsx
+  CreatureSearch.tsx
+  VibeFilter.tsx
+
+  GothSparkles.tsx     # animated sparkles behind header
+  FairyDustLayer.tsx   # cursor-trailing fairy dust particles
+  GothLoader.tsx       # gothic "summoning" loading animation
+
+  Footer.tsx           # footer with web + bloodline
+```
+
+---
+
+## 🔑 Environment Variables
+
+Create a `.env.local` file:
+
+```
+UNSPLASH_ACCESS_KEY=your_key_here
+```
+
+Get your key at:
+[https://unsplash.com/developers](https://unsplash.com/developers)
+
+---
+
+## 🚀 Running the Project
+
+Install dependencies:
+
+```bash
+npm install
+```
+
+Start the development server:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+Visit:
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+```
+http://localhost:3000
+```
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+---
 
-## Learn More
+## 🧛 Future Enhancements
 
-To learn more about Next.js, take a look at the following resources:
+Planned or possible improvements:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+* AI-generated lore for each creature
+* Dedicated creature detail pages
+* Infinite scroll / pagination
+* Save-to-favorites (localStorage)
+* Theme variations (Blood Moon, Eclipse, Midnight Velvet)
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+---
 
-## Deploy on Vercel
+## 🖤 Credits
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+* Images provided by **Unsplash**
+* Built with **Next.js**, **React**, and **Tailwind CSS**
+* Designed and developed by **Lindsey Howard**
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
