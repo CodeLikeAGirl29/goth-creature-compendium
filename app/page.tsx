@@ -24,9 +24,12 @@ export default function HomePage() {
 
   useEffect(() => {
     async function fetchCreatures() {
+      setLoading(true); // Start loading animation
       try {
-        const res = await fetch("/api/creatures");
+        // Pass the search query and vibe to the API URL
+        const res = await fetch(`/api/creatures?q=${searchQuery}&vibe=${selectedVibe}`);
         if (!res.ok) throw new Error("Failed to summon creatures");
+
         const data = await res.json();
         setCreatures(data.creatures || []);
       } catch (err: any) {
@@ -35,8 +38,9 @@ export default function HomePage() {
         setLoading(false);
       }
     }
+
     fetchCreatures();
-  }, []);
+  }, [selectedVibe, searchQuery]);
 
   const filteredCreatures = creatures.filter((creature) => {
     const matchesSearch = creature.name.toLowerCase().includes(searchQuery.toLowerCase());
@@ -73,7 +77,7 @@ export default function HomePage() {
         {/* RESULTS GRID */}
         <section className="min-h-[400px]">
           <CreatureGrid
-            creatures={filteredCreatures}
+            creatures={creatures}
             loading={loading}
             error={error}
             onImageClick={(url) => setSelectedImage(url)}
