@@ -28,7 +28,7 @@ export default function HomePage() {
         const res = await fetch("/api/creatures");
         if (!res.ok) throw new Error("Failed to summon creatures");
         const data = await res.json();
-        setCreatures(data);
+        setCreatures(data.creatures || []);
       } catch (err: any) {
         setError(err.message);
       } finally {

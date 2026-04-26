@@ -32,7 +32,7 @@ export default function FairyDustLayer() {
       // auto-remove after duration
       setTimeout(() => {
         setParticles((prev) => prev.filter((p) => p.id !== newParticle.id));
-      }, newParticle.duration + 50);
+      }, newParticle.duration);
     }
 
     window.addEventListener("mousemove", handleMove);
