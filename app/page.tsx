@@ -46,8 +46,14 @@ export default function HomePage() {
 
   return (
     <> {/* Added Fragment to wrap everything */}
-      <div className="max-w-6xl mx-auto space-y-12">
-        {/* CONTROLS: Search and Filter */}
+      <div className="max-w-6xl mx-auto px-4 py-8 space-y-12">
+        <section className="text-center max-w-2xl mx-auto space-y-4">
+          <p className="text-lg md:text-xl text-slate-300 font-serif leading-relaxed italic">
+            Explore a curated menagerie of gothic creatures—winged, fanged, and beautifully uncanny.
+            Search by name or type, then refine by vibe to summon the perfect familiar for your dark aesthetic.
+          </p>
+          <div className="h-px w-24 bg-goth-accent/30 mx-auto shadow-[0_0_8px_var(--goth-accent)]" />
+        </section>
         <section className="bg-gothCard/20 p-6 rounded-3xl border border-gothAccentSoft/10 backdrop-blur-md space-y-6">
           <div className="max-w-2xl mx-auto">
             <CreatureSearch
