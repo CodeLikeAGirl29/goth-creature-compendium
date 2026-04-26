@@ -1,4 +1,3 @@
-// app/layout.tsx
 import "./globals.css";
 import type { Metadata } from "next";
 import GothSparkles from "../components/GothSparkles";
@@ -17,26 +16,32 @@ export default function RootLayout({
 }) {
   return (
     <html lang="en">
-      {/* Apply global gothic theme */}
-      <body className="gothic-theme min-h-screen">
+      {/* 1. We apply 'gothic-theme' to the body.
+        2. 'bg-goth-bg' ensures the dark background is set from your CSS variable.
+      */}
+      <body className="gothic-theme bg-goth-bg min-h-screen font-sans antialiased text-foreground">
         <FairyDustLayer />
-        <div className="flex flex-col min-h-screen">
-          {/* Header */}
-          <header className="border-b border-goth-accent-soft/60 px-6 py-4 flex items-center justify-between">
-            <GothSparkles />
-            <h1 className="text-xl md:text-2xl font-semibold tracking-wide">
-              <span className="text-goth-accent">Gothic</span> Creature Compendium
-            </h1>
 
-            <span className="text-xs uppercase tracking-[0.2em] text-slate-400">
-              nocturnal archive
+        <div className="flex flex-col min-h-screen relative z-10">
+          {/* Header with your specific goth-accent-soft border */}
+          <header className="border-b border-goth-accent-soft px-6 py-6 flex items-center justify-between backdrop-blur-md sticky top-0 z-50 bg-goth-bg/80">
+            <div className="flex items-center gap-3">
+              <GothSparkles />
+              <h1 className="text-xl md:text-2xl font-bold tracking-[0.15em] uppercase">
+                <span className="text-goth-accent">Gothic</span> Compendium
+              </h1>
+            </div>
+
+            <span className="hidden sm:block text-[10px] uppercase tracking-[0.3em] text-slate-500">
+              Curated curiosities from the void
             </span>
           </header>
 
           {/* Main content area */}
-          <main className="flex-1 max-w-5xl w-full mx-auto px-4 py-8">
+          <main className="flex-1 w-full mx-auto">
             {children}
           </main>
+
           <Footer />
         </div>
       </body>

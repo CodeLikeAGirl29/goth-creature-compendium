@@ -1,21 +1,32 @@
-// components/CreatureCard.tsx
 type CreatureCardProps = {
   name: string;
   imageUrl: string;
   author: string;
   authorLink: string;
   vibe: string;
-  onOpen?: (url: string) => void;
+  onOpen: (url: string) => void; // Define the function type
 };
 
 export default function CreatureCard({
-  name, imageUrl, author, authorLink, vibe, onOpen
+  name,
+  imageUrl,
+  author,
+  authorLink,
+  vibe,
+  onOpen, // Destructure the new prop
 }: CreatureCardProps) {
   return (
-    <article className="bg-gothCard/80 border border-gothAccentSoft/40 rounded-2xl overflow-hidden shadow-lg shadow-black/40 hover:shadow-gothAccent/30 transition-shadow duration-300">
+    <article className="bg-gothCard/80 border border-gothAccentSoft/40 rounded-2xl overflow-hidden shadow-lg transition-all duration-300">
       {/* Wrap the image in a clickable div */}
-      <div onClick={() => onOpen(imageUrl)} className="cursor-pointer">
-        <img src={imageUrl} alt={name} />
+      <div
+        className="overflow-hidden cursor-pointer"
+        onClick={() => onOpen(imageUrl)}
+      >
+        <img
+          src={imageUrl}
+          alt={name}
+          className="w-full h-56 object-cover transition-transform duration-500 hover:scale-105"
+        />
       </div>
       <div className="p-4 flex flex-col gap-2">
         <div className="flex items-center justify-between gap-2">
