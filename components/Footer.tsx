@@ -30,7 +30,7 @@ export default function Footer() {
 
       {/* Bloodline divider */}
       <div className="bloodline" />
-      <p>&copy; {new Date().getFullYear()} Created by lindseyk | All rights reserved.</p>
+      <p>&copy; {new Date().getFullYear()} Created by lindsey k | All rights reserved.</p>
     </footer>
   );
 }

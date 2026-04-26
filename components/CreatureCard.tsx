@@ -5,23 +5,17 @@ type CreatureCardProps = {
   author: string;
   authorLink: string;
   vibe: string;
+  onOpen?: (url: string) => void;
 };
 
 export default function CreatureCard({
-  name,
-  imageUrl,
-  author,
-  authorLink,
-  vibe,
+  name, imageUrl, author, authorLink, vibe, onOpen
 }: CreatureCardProps) {
   return (
     <article className="bg-gothCard/80 border border-gothAccentSoft/40 rounded-2xl overflow-hidden shadow-lg shadow-black/40 hover:shadow-gothAccent/30 transition-shadow duration-300">
-      <div className="overflow-hidden">
-        <img
-          src={imageUrl}
-          alt={name}
-          className="w-full h-56 object-cover transition-transform duration-500 hover:scale-105"
-        />
+      {/* Wrap the image in a clickable div */}
+      <div onClick={() => onOpen(imageUrl)} className="cursor-pointer">
+        <img src={imageUrl} alt={name} />
       </div>
       <div className="p-4 flex flex-col gap-2">
         <div className="flex items-center justify-between gap-2">

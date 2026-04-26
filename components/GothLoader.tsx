@@ -1,5 +1,3 @@
-// components/GothLoader.tsx
-
 export default function GothLoader() {
   return (
     <div className="goth-loader text-sm text-slate-300">

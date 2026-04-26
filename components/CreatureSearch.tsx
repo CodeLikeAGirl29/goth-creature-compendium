@@ -1,4 +1,3 @@
-// components/CreatureSearch.tsx
 "use client";
 
 import { FormEvent } from "react";

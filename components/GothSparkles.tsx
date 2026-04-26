@@ -1,4 +1,3 @@
-// components/GothSparkles.tsx
 "use client";
 
 import type { CSSProperties } from "react";

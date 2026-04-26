@@ -1,4 +1,3 @@
-// components/VibeFilter.tsx
 const VIBES = ["all", "cute", "spooky", "demonic", "ethereal", "vampire"] as const;
 
 type VibeFilterProps = {
